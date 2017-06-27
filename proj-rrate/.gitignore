@@ -60,4 +60,4 @@ typings/
 .env
 
 # tokens
-config/
+*.config
