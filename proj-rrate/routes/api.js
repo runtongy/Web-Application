@@ -21,14 +21,19 @@ const Rate2Schema = new Schema({
 })
 const Rate2 = mongoose.model('rate2', Rate2Schema)
 
+//grab configs for Yelp
+const YelpConfig = require('../config/yelp')
+
+//grab configs for Zomato
+const ZomatoConfig = require('../config/zomato')
+
 router.get('/rate1', function(req, res, next){
     var request = require("request");
 
     var options = {
         method: 'GET',
         url: 'https://api.yelp.com/v3/businesses/search?location=boston&term=nudpub',
-        headers:{'Authorization':
-            'Bearer i-8DFyaRM0zNLa1qCG7KjiPjHfn0sCSw323Yp1jSVUZ-dWuPbyT2kHSgoGCJoP1_ch-K-FNe_3SXhUh5h7My6sRhhkKOsb4cOFc2BUGH2ncub4TPECAo0tFaZ05QWXYx'}
+        headers: YelpConfig.headers
     };
 
     request(options, function(error, response, body){
@@ -46,8 +51,7 @@ router.get('/rate1update', function(req, res, next){
     var options = {
         method: 'GET',
         url: 'https://api.yelp.com/v3/businesses/search?location=boston&term=nudpub',
-        headers:{'Authorization':
-            'Bearer i-8DFyaRM0zNLa1qCG7KjiPjHfn0sCSw323Yp1jSVUZ-dWuPbyT2kHSgoGCJoP1_ch-K-FNe_3SXhUh5h7My6sRhhkKOsb4cOFc2BUGH2ncub4TPECAo0tFaZ05QWXYx'}
+        headers: YelpConfig.headers
     };
 
     request(options, function(error, response, body){
@@ -64,13 +68,10 @@ router.get('/rate1update', function(req, res, next){
 router.get('/rate2', function (req, res, next) {
     var request = require("request");
 
-    let Token = "2873c9bc693ec59df952ec0eacf13e58";
+    let Token = ZomatoConfig.Token;
     let zomatoAPI = 'https://developers.zomato.com/api/v2.1/search?entity_id=289&entity_type=city&q=nud%20pub';
     let zomatoOptions = {
-        headers: {
-            'Accept': 'application/json',
-            'user-key': '2873c9bc693ec59df952ec0eacf13e58'
-        }
+        headers: ZomatoConfig.headers
     };
     request.get(zomatoAPI, zomatoOptions, function (error, response) {
         if (error) throw new Error(error)
@@ -85,13 +86,10 @@ router.get('/rate2', function (req, res, next) {
 router.get('/rate2update', function (req, res, next) {
     var request = require("request");
 
-    let Token = "2873c9bc693ec59df952ec0eacf13e58";
+    let Token = ZomatoConfig.Token;
     let zomatoAPI = 'https://developers.zomato.com/api/v2.1/search?entity_id=289&entity_type=city&q=nud%20pub';
     let zomatoOptions = {
-        headers: {
-            'Accept': 'application/json',
-            'user-key': '2873c9bc693ec59df952ec0eacf13e58'
-        }
+        headers: ZomatoConfig.headers
     };
     request.get(zomatoAPI, zomatoOptions, function (error, response) {
         if (error) throw new Error(error)

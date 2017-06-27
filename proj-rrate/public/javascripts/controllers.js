@@ -25,12 +25,14 @@ angular.module('cs591', ['ngCookies'])
 
                 })
         };
+
         $scope.logout = function () {
             $http.get('http://localhost:3000/auth/logout')
                 .then(function (response) {
                     $scope.authorized = false
                 })
-        }
+        };
+
         $scope.login = function () {
             const request = {
                 method: 'post',
@@ -50,19 +52,18 @@ angular.module('cs591', ['ngCookies'])
                     }
                 )
         }
+
         $scope.initApp = function () {
             $scope.buttonState = "create"
             $scope.h2message = "Add user"
             $scope.buttonMessage = "Add User"
             $scope.authorized = false
             $scope.showLogin = false
-//            $scope.getUsers()
-//            $scope.getAuth()
             //Grab cookies if present
             let authCookie = $cookies.get('authStatus')
             $scope.authorized = !!authCookie
         }
-        $scope.showLoginForm = function () {
+        $scope.showLogin = function () {
             $scope.showLogin = true
         }
 

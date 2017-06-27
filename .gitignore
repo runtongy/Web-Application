@@ -62,3 +62,4 @@ typings/
 # tokens
 *.config
 config/
+config
