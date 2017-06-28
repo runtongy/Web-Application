@@ -8,7 +8,7 @@ angular.module('cs591', ['ngCookies'])
     })
     .controller('cs591ctrl', function($scope, $http, $cookies){
 
-        //READ (GET)
+        //READ (GET). Get the data I get from Yelp API
         $scope.getRate1 = function() {
             $http.get('http://localhost:3000/api/rate1update')
                 .then(function(response){
@@ -17,7 +17,7 @@ angular.module('cs591', ['ngCookies'])
                 })
         };
 
-        //READ (GET)
+        //READ (GET). Get the data I get from Zomato API
         $scope.getRate2 = function() {
             $http.get('http://localhost:3000/api/rate2update')
                 .then(function(response){
@@ -25,14 +25,14 @@ angular.module('cs591', ['ngCookies'])
 
                 })
         };
-
+        //Log out
         $scope.logout = function () {
             $http.get('http://localhost:3000/auth/logout')
                 .then(function (response) {
                     $scope.authorized = false
                 })
         };
-
+        //Log in
         $scope.login = function () {
             const request = {
                 method: 'post',
@@ -52,7 +52,7 @@ angular.module('cs591', ['ngCookies'])
                     }
                 )
         }
-
+        //The Initial Function
         $scope.initApp = function () {
             $scope.buttonState = "create"
             $scope.h2message = "Add user"
@@ -67,7 +67,7 @@ angular.module('cs591', ['ngCookies'])
             $scope.showLogin = true
         }
 
-
+        //The Twitter Authorization
         $scope.doTwitterAuth = function () {
             var openUrl = 'http://localhost:3000/auth/twitter/'
             //Total hack, this:

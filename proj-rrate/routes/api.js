@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
+//Helper for authorization
 const authorized = require('./authCheck')
 
 const mongoose = require('mongoose')
@@ -27,6 +28,7 @@ const YelpConfig = require('../config/yelp')
 //grab configs for Zomato
 const ZomatoConfig = require('../config/zomato')
 
+//grab restaurants' names and ratings from Yelp's API
 router.get('/rate1', function(req, res, next){
     var request = require("request");
 
@@ -45,6 +47,7 @@ router.get('/rate1', function(req, res, next){
     });
 })
 
+//Update the data that I get from Yelp's API
 router.get('/rate1update', function(req, res, next){
     var request = require("request");
 
@@ -64,7 +67,7 @@ router.get('/rate1update', function(req, res, next){
     });
 })
 
-
+//Get restaurants' ratings from Zomato API
 router.get('/rate2', function (req, res, next) {
     var request = require("request");
 
@@ -83,6 +86,7 @@ router.get('/rate2', function (req, res, next) {
     });
 })
 
+//Update the data I get from Zomato API
 router.get('/rate2update', function (req, res, next) {
     var request = require("request");
 

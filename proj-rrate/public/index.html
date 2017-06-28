@@ -29,13 +29,16 @@
 
 <body ng-app="cs591">
 <div ng-controller="cs591ctrl" ng-init="initApp()">
+    <!-- My logo -->
     <img class = "center" src="/images/ratingrankin.png" style="width:400px;height:140px;">
     <br>
+    <!--Button that is used to click and log in with Twitter -->
     <div ng-hide="authorized">
         <br/>
         <button type="submit" class="btn btn-primary" ng-click="doTwitterAuth()">Log in with Twitter</button>
     </div>
     <br>
+    <!--Button that is used to click and get the result. Notice that this will not be showed until the user is authorized by Twitter-->
     <div ng-show="authorized">
         <div class = "middle1">
             <button type="submit" class="btn btn-primary" ng-click="getRate1(); getRate2()">Get Average Rating!</button>
@@ -44,10 +47,12 @@
             <br>
             <br>Restaurant's Name : {{rate1.name}}
             <br>
+            <!-- My algorithm that is used to get the average rating of restaurants. It is pretty simple :)-->
             <br>Restaurant's Average Rating : {{1/2*(rate1.rating+rate2.rating)}}
         </div>
     </div>
     <br>
+    <!-- The log out button-->
     <div ng-show="authorized">
         <button class="btn btn-sm" ng-click="logout()">Log out</button>
     </div>
