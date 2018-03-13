@@ -1,4 +1,5 @@
-#A repository for my Web Application project.
+# A repository for my Web Application project.
+# The project is under the proj-rrate repository.
 #
 #	Created a web application to provide customers with fairer review of restaurants.
 #   o	Used API to grab data from Yelp app and Zoomato app.
